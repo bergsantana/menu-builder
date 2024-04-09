@@ -11,18 +11,21 @@ const registerForm: Ref<User | undefined> = ref()
 <template>
     <div :class="$style.form">
         <p :class="$style.title">First name</p>
-        <input />
+        <input :value="registerForm?.firstName" />
 
         <p :class="$style.title">Last Name</p>
-        <input />
+        <input :value="registerForm?.lastName"/>
         
         <p :class="$style.title">E-mail</p>
-        <input />
+        <input :valeu="registerForm?.email" />
 
         <p :class="$style.title">Password</p>
-        <input />
+        <input :value="registerForm?.lastName"/>
+
+        <p :class="$style.birthdate">Birthdate</p>
+        <input :value="registerForm?.birthDate" type=date> 
     </div>
 
 </template>
 
-<style module scoped lang="sass"></style>
+<style module scoped lang="scss"></style>

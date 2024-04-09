@@ -3,11 +3,17 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div>
+  <div :class="$style.maincontainer">
     <RouterView  />
   </div>
 </template>
 
-<style scoped>
+<style module lang="scss">
+
+.maincontainer{
+  height: 100vh;
+  background-color: rgb(217, 217, 217);
+  display: grid;
+}
  
 </style>

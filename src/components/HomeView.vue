@@ -13,8 +13,7 @@ import { RouterLink } from 'vue-router';
                 </h4>
             </div>
             <div>
-                
-                <RouterLink to="/" >
+                <RouterLink to="/menu/create" >
                     <button>Create</button>
                 </RouterLink>
                 <RouterLink to="/">
@@ -26,8 +25,8 @@ import { RouterLink } from 'vue-router';
     </div>
 </template>
 
-<style module scoped>
-.container{
-    margin: auto;
+<style module scoped lang="scss">
+.container{ 
+    
 }
 </style>
