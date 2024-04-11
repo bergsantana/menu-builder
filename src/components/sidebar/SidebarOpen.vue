@@ -34,11 +34,12 @@ const emit = defineEmits<Emits>()
     flex-direction: row;
     height: 100%;
     width: 115%;
+     
 
     div{
         display: flex;
         flex-direction: column;
-        
+        margin: 0rem 0rem 0rem 0.5rem;
     }
     .btns {
         /*padding: 0 1rem 0 1rem;*/

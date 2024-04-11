@@ -18,7 +18,7 @@ const emit = defineEmits<{
     </button>
 </template>
 
-<style module lang="scss">
+<style module lang="scss" scoped>
 .customBtn{
     border: none;
     color: slategray;

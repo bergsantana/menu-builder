@@ -10,12 +10,14 @@ const isOpen = ref(false)
 
 <template>
   <div :class="$style.maincontainer">
-    <div v-if="isOpen" :class="$style.openSidebar"> 
+    <div  :class="isOpen ? $style.openSidebar : $style.hiddenSideBar"> 
       <SidebarOpen 
         @on-close="() => isOpen = false"
       />
     </div>
-    <Sidebar @open-sidebar="() => isOpen = true" />
+    <div :class="$style.closedSidebar">
+      <Sidebar @open-sidebar="() => isOpen = true" />
+    </div>
     <RouterView  />
   </div>
 </template>
@@ -28,13 +30,29 @@ const isOpen = ref(false)
   display: grid;
   grid-template-columns: 0.05fr 1fr;
   position: relative;
+  gap: 10px;
+}
+
+.closedSidebar {
+  color: white;
+  background: rgb(43, 43, 43);
+  border-right: 0.15rem solid rgb(134, 134, 134);
+}
+
+
+.hiddenSideBar{
+  height: 100%;
+  left: -200px;
+  position: absolute;
+  transition: left 150ms linear;
 }
 
 .openSidebar{
   position: absolute;
   border: solid rgb(117, 117, 117) 1px;
- 
   height: 100%;
+  left: -1px;
+  transition: left 150ms linear;
  }
  
 </style>

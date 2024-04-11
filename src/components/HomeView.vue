@@ -7,21 +7,21 @@ import Button from './molecules/Button.vue'
 
 <template>
     <div :class=$style.container>
-        <p>home page</p>
+        <p  >home page</p>
         <div>
-            <div>
+            <div :class="$style.greetings">
                 <h4>
                     Hello "{{ `user` }}"
                 </h4>
             </div>
-            <div>
+            <div :class="$style.btns">
                 <RouterLink to="/menu/create" >
                      
-                    <Button  :text="'Create'" />
+                    <Button  :text="'New'" />
                 </RouterLink>
                 <RouterLink to="/">
                      
-                    <Button :text="'View'" />
+                    <Button :text="'My Menus'" />
                 </RouterLink>
                 
             </div>
@@ -31,6 +31,20 @@ import Button from './molecules/Button.vue'
 
 <style module scoped lang="scss">
 .container{ 
-    
+    p { 
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: arial;
+        color: slategray;
+    }
 }
+
+.greetings{
+    background: white;
+}
+
+.btns{
+    background:  white;
+}
+
 </style>

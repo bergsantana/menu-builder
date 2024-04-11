@@ -20,5 +20,8 @@ const emit = defineEmits<{
 </template>
 
 <style module scoped lang="scss">
+    div{
+        margin: 0rem 0rem 0rem 0.5rem;
+    }
  
 </style>
