@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import Button from './molecules/Button.vue'
+
 
 </script>
 
@@ -14,10 +16,12 @@ import { RouterLink } from 'vue-router';
             </div>
             <div>
                 <RouterLink to="/menu/create" >
-                    <button>Create</button>
+                     
+                    <Button  :text="'Create'" />
                 </RouterLink>
                 <RouterLink to="/">
-                    <button>View</button>
+                     
+                    <Button :text="'View'" />
                 </RouterLink>
                 
             </div>

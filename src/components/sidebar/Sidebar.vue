@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import SidebarOpen from './SidebarOpen.vue'
+import Button from '../molecules/Button.vue';
 
+const emit = defineEmits<{
+    (e: 'openSidebar'): void
+}>()
 
-const isOpen = ref(false)
 </script>
 
 <template>
@@ -12,19 +13,12 @@ const isOpen = ref(false)
             <p>
                 Hello, USER
             </p>
-            <button @click="() => isOpen = !isOpen">
-                Open
-            </button>
+            <Button  :text="'Open'" @btn-click="emit('openSidebar')" />
         </div>
-        <div v-if="isOpen" :class="$style.openSidebar"> 
-            <SidebarOpen />
-        </div>
+        
     </aside>
 </template>
 
 <style module scoped lang="scss">
-.openSidebar{
-    position: absolute;
-    border: solid black 0.1rem;
-}
+ 
 </style>
