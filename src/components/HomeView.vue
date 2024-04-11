@@ -11,7 +11,7 @@ import Button from './molecules/Button.vue'
         <div>
             <div :class="$style.greetings">
                 <h4>
-                    Hello "{{ `user` }}"
+                    Hello, {{ `user` }}.
                 </h4>
             </div>
             <div :class="$style.btns">

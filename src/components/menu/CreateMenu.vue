@@ -2,6 +2,7 @@
 import { Ref, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import  Menu from '../../interfaces/menu'
+import Button from '../molecules/Button.vue';
 
 const menuForm : Ref<Menu> = ref({
     menutitle: '',
@@ -23,24 +24,33 @@ const menuForm : Ref<Menu> = ref({
             <div :class="$style.formField">
                 <p>Menu title</p>
                 <input :value="menuForm.menutitle" />
-                 
                 <div :class="$style.menuItem" v-for="(item, i) in menuForm.items" :key="item.id" :index="i">
-                    <p>Photo URL</p>
-                    <input :value="item.photoUrl" />
-
-                    <p>Item title</p>
-                    <input :value="item.itemTitle"/>
-
+                    <div :class="$style.inputcontainer">
+                        <p>Photo URL</p>
+                        <input :value="item.photoUrl" />
+                    </div>
+                   
+                    <div  :class="$style.inputcontainer">
+                        <p>Item title</p>
+                        <input :value="item.itemTitle"/>
+                    </div>
                     
-                    <p>Item itemDescription</p>
-                    <input :value="item.itemTitle"/>
- 
-                    <p>Price</p>
-                    <input :value="item.price" type="number">
-                    
-                    <button @click="() => item.disabled = !item.disabled">
-                        {{ item.disabled ? 'disable' : 'enable' }}
-                    </button>
+                    <div :class="$style.inputcontainer">
+                        <p>Item itemDescription</p>
+                        <input :value="item.itemTitle"/>
+                    </div>
+
+                    <div :class="$style.inputcontainer">
+                        <p>Price</p>
+                        <input :value="item.price" type="number">
+                    </div>
+                     
+                    <div :class="$style.inputcontainer">
+                        <Button 
+                            :text="item.disabled ? 'disabled' : 'enable'" 
+                            @btn-click="() => item.disabled = !item.disabled"
+                        />
+                    </div>
                 </div>
 
             </div>
@@ -48,7 +58,7 @@ const menuForm : Ref<Menu> = ref({
         </div>
 
         <RouterLink to="/">
-            <button>Home</button>
+            <Button :text="'Home'" />
         </RouterLink>
     </div>
 </template>
