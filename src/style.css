@@ -1,5 +1,14 @@
+:root{
+    --dark-gray: rgb(43, 43, 43);
+    --light-gray: rgb(201, 201, 201);
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --lighter-dark-background: #444;
+}
+
 body {
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
 }
+ 
  
