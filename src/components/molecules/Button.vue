@@ -21,7 +21,7 @@ const emit = defineEmits<{
 <style module scoped lang="scss"  >
 .customBtn{
     border: none;
-    color: slategray;
+    color: var(--light-gray);
     background: var(--lighter-dark-background);
     font-weight: bold;
     margin: 0.28rem;

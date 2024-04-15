@@ -125,8 +125,7 @@ const deleteItem = (id: number) => {
     width: 100%;  
     background: var(--dark-gray);
     /*border: solid gray 0.05rem;*/
-    border-radius: 1%;
-    display: flex;
+     display: flex;
     flex-direction: column;
     color: var(--white);
 

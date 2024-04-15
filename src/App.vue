@@ -48,8 +48,8 @@ const isOpen = ref(false)
   grid-template-columns: 5rem 1fr 1fr;
   grid-template-rows: 2rem 1fr;
   position: relative;
-  gap: 1.05rem;
-}
+  row-gap: 1.05rem;
+  column-gap: 0.01rem;}
 
 .closedSidebar {
   grid-area: sidebar;
