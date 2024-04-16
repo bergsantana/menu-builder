@@ -27,7 +27,7 @@ const emit = defineEmits<{
     margin: 0.28rem;
     border-radius: 5%;
     transition: 100ms;
-
+    border: solid var(--lighter-dark-background) 0.1rem ;
     &:hover{
         background-color: var(--dark-gray);
         background: var(--dark-gray);

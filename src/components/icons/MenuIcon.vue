@@ -1,4 +1,11 @@
+<script setup lang="ts">
+
+const props = defineProps<{
+    fillColor : string
+}>()
+
  
+</script>
 
 <template>
     <svg 
@@ -11,9 +18,8 @@
 
         <g 
         transform="translate(0.000000,252.000000) scale(0.100000,-0.100000)"
-        fill="#000000" 
+        :fill="props.fillColor" 
         stroke="none"
-       
         >
             <path d="M352 2449 c-79 -40 -104 -95 -106 -239 l-1 -105 -30 -5 c-36 -6 -58
                 -43 -50 -84 7 -41 23 -56 57 -56 l29 0 -3 -97 -3 -98 -30 -5 c-36 -6 -58 -43

@@ -7,6 +7,7 @@ import { ref } from 'vue';
 
 
 const isOpen = ref(false)
+const loggedUser = ref(false)
 
 </script>
 
@@ -15,7 +16,9 @@ const isOpen = ref(false)
  
     <div  :class="isOpen ? $style.openSidebar : $style.hiddenSideBar"> 
       <SidebarOpen 
+        :logged-in="loggedUser"
         @on-close="() => isOpen = false"
+        @on-route-click="() => isOpen=false"
       />
     </div>
 

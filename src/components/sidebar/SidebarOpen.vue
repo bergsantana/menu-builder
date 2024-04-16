@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import Button from '../molecules/Button.vue';
 
- 
+const props = defineProps<{
+    loggedIn: boolean
+}>() 
 interface Emits {
     (e: 'onClose'): void
-    (e: 'routeClick'): void
+    (e: 'onRouteClick'): void
     (e: 'onLogClick'): void
 }
 const emit = defineEmits<Emits>()
@@ -18,8 +20,13 @@ const emit = defineEmits<Emits>()
                 Hello, USER
             </p>
             <div :class="$style.btns"> 
+                <RouterLink :to="props.loggedIn ?'/users/01' : '/users/create'">
+                    <Button 
+                    :text="props.loggedIn ?'My Profile' : 'Register'"
+                    @btn-click="emit('onRouteClick')" /> 
+                </RouterLink>
                 <Button :text="'Close'"  @btn-click="emit('onClose')"/>
-                <Button :text="'Login/LogOff'" /> 
+                 
                 <Button :text="'My Menus'" /> 
             </div>
         </div>

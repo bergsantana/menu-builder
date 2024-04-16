@@ -8,7 +8,7 @@ import Button from '../molecules/Button.vue';
 <template>
     <header :id="$style.container">
         <div :id="$style.menuIcon">
-            <MenuIcon :svg-style="$style.svgIcon"/>
+            <MenuIcon  :fill-color="'#FFFFFF'"/>
         </div> 
         <div :id="$style.homeContainer">
             <RouterLink to="/">
@@ -34,14 +34,7 @@ import Button from '../molecules/Button.vue';
         grid-area: head;
         justify-content: center;
         /*border: solid black 5px; */
-        & svg {
-            display: grid;
-            height: 85%; 
-            align-self: center;
-            & g path {
-                fill: var(--white);
-            }
-        }
+        
        
     }
 
@@ -50,5 +43,16 @@ import Button from '../molecules/Button.vue';
         grid-area: home;
         justify-content: end;
     }
+}
+
+#menuIcon {
+    svg {
+    display: grid;
+    height: 85%; 
+    align-self: center;
+     
+    g {
+        fill: var(--white);
+    }}
 }
 </style>

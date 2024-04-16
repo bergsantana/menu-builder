@@ -56,9 +56,7 @@ const deleteItem = (id: number) => {
                         <Button :text="'New item'" @btn-click="addItem" />
                     </div>
                 </div> 
-
-                 
-                 
+  
                 <SlickList 
                     axis="y" 
                     v-model:list=menuForm.items 
