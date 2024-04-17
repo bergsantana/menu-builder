@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { ref, Ref } from 'vue'
-import Menu from '../../interfaces/menu';
+import {Menu} from '../../interfaces/menu';
 
 
 const menuForm : Ref<Menu> = ref({
     menutitle: '',
     items: [{
         id: 1,
+        seq: 1,
         itemTitle: '',
         itemDescription: '',
         photoUrl: '',

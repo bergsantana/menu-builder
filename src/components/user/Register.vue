@@ -3,6 +3,8 @@ import { Ref, ref } from 'vue';
 import User from '../../interfaces/user';
 
 import Button from '../molecules/Button.vue';
+import ShowPass from '../icons/ShowPass.vue';
+import HidePass from '../icons/HidePass.vue';
 
 const registerForm: Ref<User> = ref({
     firstName: '',
@@ -19,31 +21,45 @@ const showPass = ref(false)
     <div :class="$style.form">
         <div :id="$style.inputFields"> 
             <p :class="$style.title">First name</p>
-            <input v-model="registerForm.firstName" />
+            <input v-model="registerForm.firstName" :class="$style.inputField"/>
 
             <p :class="$style.title">Last Name</p>
-            <input v-model="registerForm.lastName"/>
+            <input v-model="registerForm.lastName" :class="$style.inputField"/>
             
             <p :class="$style.title">E-mail</p>
-            <input v-model="registerForm.email" />
+            <input v-model="registerForm.email" :class="$style.inputField" />
 
 
             <div :id="$style.passwordField">
                 <p :class="$style.title">Password</p>
-                <input v-model="registerForm.lastName" :type="!showPass ? 'password' : 'text'"/>
+                <div :id="$style.passBox">
+                    <input v-model="registerForm.password" :type="!showPass ? 'password' : 'text'" :class="$style.inputField" />
 
-                <button :id="$style.showPass" @click="showPass=!showPass">Show pass</button>
+                    <div :id="$style.showPass" @click="showPass=!showPass">
+                        <ShowPass :fill-color="'#FFFFFF'" v-if="!showPass" />
+                        <HidePass v-else="showPass" :fill-color="'#FFFFFF'" />
+                    </div>
+                </div>
+                 
             </div>
-       
-            <p :class="$style.birthdate">Birthdate</p>
-            <input v-model="registerForm.birthDate" type=date> 
+            <div :id="$style.birthdayContainer">
+                <p :class="$style.birthdate">Birthdate</p>
+                <input 
+                    v-model="registerForm.birthDate" 
+                    type=date 
+                    :id="$style.birthdateInput" /> 
+            </div>
+             
         </div>
         <div :id="$style.bottomBtns"> 
-            <div>
-                <Button :text="'Cancel'" />
+            <div :id="$style.cancelBtn">
+                <RouterLink to="/">
+                    <Button :text="'Cancel'" />
+                </RouterLink>
+                 
             </div>
 
-            <div>
+            <div :id="$style.confirmBtn">
                 <Button :text="'Confirm'" />
             </div>
         </div>
@@ -58,11 +74,78 @@ const showPass = ref(false)
     color: var(--light-gray);
     justify-content: center;
     align-items: start;
-    height: 100;
+    height: 100%;
+    grid-template-rows: 1fr 2fr;
 }
 
-#inputFields {
-    display: grid;
+#inputFields{
+    width: 20rem;
+    border: 0.1rem solid var(--light-gray);
+    padding: 1rem;
+    margin: 0.5rem 0rem 0rem 0rem;
+    border-radius: 3%;
+    .inputField{
+        width: 100%;
+    }
+}
+ 
+#showPass {
+    height: 1.25rem;
+    border: solid 0.1rem var(--dark-gray);
+    border-radius: 5%;
+    width: 1.5rem;
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+    &:hover{
+        cursor: pointer;
+        border: solid 0.1rem var(--light-gray);
+        transition: 500ms
+    }
+   
+} 
 
- }
+#passBox{
+    display: flex;
+    flex-direction: row;
+}
+
+#bottomBtns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    #cancelBtn {
+        justify-self: start;
+    }
+    #confirmBtn{
+        justify-self: end;
+    }
+    margin: 2rem 0rem 1rem 0rem;
+    padding: 0;
+}
+
+#birthdateInput{
+    height: 1.25rem;
+    width: 8rem;
+    justify-self: end;
+    align-self: center;
+    
+}
+#birthdayContainer{
+   display: grid;
+   grid-template-columns: 1fr 1fr; 
+   margin: 1rem 0rem 0rem 0rem;
+}
+.title{
+    align-self: center;
+}
+
+@media(max-width: 500px){
+    #inputFields {
+        width: 100%;
+        border: none;
+        padding: 0;
+        margin: 0; 
+    }
+}
 </style>

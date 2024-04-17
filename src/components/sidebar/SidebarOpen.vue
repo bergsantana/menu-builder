@@ -41,7 +41,7 @@ const emit = defineEmits<Emits>()
     flex-direction: row;
     height: 100%;
     width: 115%;
-     
+    border-right: 0.1rem  solid var(--light-gray);
 
     div{
         display: flex;

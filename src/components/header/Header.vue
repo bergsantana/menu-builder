@@ -7,6 +7,7 @@ import Button from '../molecules/Button.vue';
 
 <template>
     <header :id="$style.container">
+        <div :id="$style.emptyContainer" ></div>
         <div :id="$style.menuIcon">
             <MenuIcon  :fill-color="'#FFFFFF'"/>
         </div> 
@@ -26,16 +27,21 @@ import Button from '../molecules/Button.vue';
     background-color: var(--dark-gray);
     color: var(--white);
     display: grid;
-    grid-template-areas: 'head head head header home';
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 'head center home';
+    grid-template-columns: 1fr 1fr 1fr ;
     grid-template-rows: 3rem;
     #menuIcon  {
         display: grid;
-        grid-area: head;
+        grid-area: center ;
         justify-content: center;
         /*border: solid black 5px; */
         
        
+    }
+
+    #emptyContainer{
+        display: grid;
+        grid-area: head;
     }
 
     #homeContainer {

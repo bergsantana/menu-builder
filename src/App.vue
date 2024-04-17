@@ -85,4 +85,10 @@ const loggedUser = ref(false)
  #contentContainer{
   grid-area: content;
   }
+
+@media(max-width: 500px) {
+  .closedSidebar {
+     display: none;
+  }
+}
 </style>
