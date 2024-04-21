@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
-import User from '../../interfaces/user';
+import {User} from '../../interfaces/user';
 
 import Button from '../molecules/Button.vue';
 import ShowPass from '../icons/ShowPass.vue';

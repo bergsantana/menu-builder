@@ -4,10 +4,13 @@ import Sidebar from './components/sidebar/Sidebar.vue'
 import SidebarOpen from './components/sidebar/SidebarOpen.vue';
 import Header from './components/header/Header.vue';
 import { ref } from 'vue';
+import { useUserStore } from './stores/userStore';
 
 
 const isOpen = ref(false)
-const loggedUser = ref(false)
+ 
+const userStore = useUserStore()
+ 
 
 </script>
 
@@ -16,7 +19,7 @@ const loggedUser = ref(false)
  
     <div  :class="isOpen ? $style.openSidebar : $style.hiddenSideBar"> 
       <SidebarOpen 
-        :logged-in="loggedUser"
+        :logged-in="userStore.loggedInUser ? true : false"
         @on-close="() => isOpen = false"
         @on-route-click="() => isOpen=false"
       />

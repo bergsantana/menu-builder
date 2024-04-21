@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { Ref, computed, ref } from 'vue';
-import User from '../../interfaces/user';
+import {User} from '../../interfaces/user';
+import { useUserStore } from '../../stores/userStore';
+
+const userStore = useUserStore()
 
 const registerForm: Ref<User> = ref({
-    firstName: 'Firstname',
-    lastName: 'Lastname',
-    email: 'example@gmail.com',
-    password: 'f23asd145f$#',
-    birthDate: '09/09/1996',
+    firstName: userStore.loggedInUser?.firstName ?? '',
+    lastName: userStore.loggedInUser?.lastName ?? '',
+    email: userStore.loggedInUser?.email ?? '',
+    password: '',
+    birthDate:  userStore.loggedInUser?.birthDate ?? '',
 })
-const userName = computed(() => {return "USERNAME"})
+const userName = computed(() => {return userStore.loggedInUser?.firstName ?? 'USER'})
 
 const showPass = ref(false)
 
@@ -24,18 +27,18 @@ const showPass = ref(false)
         
         <div :id="$style.inputFields"> 
             <p :class="$style.title">First name</p>
-            <input v-model="registerForm.firstName" />
+            <input v-model="registerForm.firstName" disabled />
 
             <p :class="$style.title">Last Name</p>
-            <input v-model="registerForm.lastName"/>
+            <input v-model="registerForm.lastName" disabled/>
             
             <p :class="$style.title">E-mail</p>
-            <input v-model="registerForm.email" />
+            <input v-model="registerForm.email" disabled />
 
 
             <div :id="$style.passwordField">
                 <p :class="$style.title">Password</p>
-                <input v-model="registerForm.lastName" :type="!showPass ? 'password' : 'text'"/>
+                <input v-model="registerForm.password" :type="!showPass ? 'password' : 'text'" disabled/>
 
                 <button :id="$style.showPass" @click="showPass=!showPass">Show pass</button>
             </div>
@@ -57,4 +60,10 @@ const showPass = ref(false)
 
 </template>
 
-<style module scoped lang="scss"></style>
+<style module scoped lang="scss">
+#container  {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 50%;
+}
+</style>

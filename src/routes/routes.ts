@@ -4,10 +4,12 @@ import Register from "../components/user/Register.vue";
 import Profile from "../components/user/Profile.vue";
 import ViewMenu from "../components/menu/ViewMenu.vue";
 import CreateMenu from "../components/menu/CreateMenu.vue";
+import Login from "../components/Login.vue";
 
 const routes = [
     {path:  '/', component: HomeView},
-    {path: '/users/create', component: Register},
+    {path: '/login', component: Login},
+    {path: '/users/register', component: Register},
     {path: '/users/:id', component: Profile},
     {path: '/menu/create', component: CreateMenu},
     {path: '/menu/:id', component: ViewMenu}
