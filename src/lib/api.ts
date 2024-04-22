@@ -24,7 +24,7 @@ function useAPI()  {
         return undefined
     }
     const register = async (user: User) => {
-        return await api.post('/users/create', user)
+        return await api.post('/user/create', user)
     }
 
     const findUserData = async (email: string) => {
@@ -37,7 +37,7 @@ function useAPI()  {
     }
 
     const getAllMenuByUser = async (id: string) => {
-        const req =  await api.get(`/menu/findbyuser/${id}`)
+        const req =  await api.get(`/menu/findallbyuser/${id}`)
         return req.data
     }
 

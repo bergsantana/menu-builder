@@ -23,7 +23,7 @@ const headerStr = computed(() => {
                     {{ headerStr }}
                 </h4>
             </div>
-            <div :class="$style.btns">
+            <div :class="$style.btns" v-if="userStore.loggedInUser">
                 <RouterLink to="/menu/create" >
                      
                     <Button  :text="'New'" />
@@ -60,4 +60,10 @@ const headerStr = computed(() => {
     background:  white;
 }
 
+#myMenusContainer{
+    display: grid;
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
+    
+}
 </style>

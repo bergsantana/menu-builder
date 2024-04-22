@@ -23,10 +23,25 @@ const itemsNum = computed(()=> {return`${props.items.length} items in this menu`
 </template>
 
 
-<style   module scoped lang="scss">
+<style module scoped lang="scss">
 
-#miniMenuContainer {
-    display: grid;
-}
+
+    #miniMenuContainer {
+        display: grid;
+        grid-template-areas: 'title' 'description';
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1fr;
+        
+        #menuTitle{
+            display: grid;
+            grid-area: title
+        }
+
+        #itemNum{
+            display: grid;
+            grid-area: description;
+        }
+
+    }
 
 </style>

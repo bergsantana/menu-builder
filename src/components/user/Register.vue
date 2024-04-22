@@ -5,6 +5,15 @@ import {User} from '../../interfaces/user';
 import Button from '../molecules/Button.vue';
 import ShowPass from '../icons/ShowPass.vue';
 import HidePass from '../icons/HidePass.vue';
+import { useUserStore } from '../../stores/userStore';
+import api from '../../lib/api';
+import { useRouter } from 'vue-router';
+
+const userStore = useUserStore()
+
+const router = useRouter()
+
+const register = api.useAPI().register
 
 const registerForm: Ref<User> = ref({
     firstName: '',
@@ -15,6 +24,20 @@ const registerForm: Ref<User> = ref({
 })
 
 const showPass = ref(false)
+
+const registerUser = async () => {
+    try{   
+        const registerReq = (await register(registerForm.value)).data
+        const loginToken  = await api.useAPI().login(registerForm.value.email, registerForm.value.password)
+        userStore.login(registerReq)
+        api.useBearerToken(loginToken)
+        router.push({path: '/'})
+    }catch(e){
+        console.log(e)
+    }
+} 
+
+
 </script>
 
 <template>
@@ -60,7 +83,7 @@ const showPass = ref(false)
             </div>
 
             <div :id="$style.confirmBtn">
-                <Button :text="'Confirm'" />
+                <Button :text="'Confirm'" @btn-click="registerUser" />
             </div>
         </div>
     </div>
