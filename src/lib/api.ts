@@ -37,7 +37,8 @@ function useAPI()  {
     }
 
     const getAllMenuByUser = async (id: string) => {
-        return  await api.get(`/menu/findbyuser/${id}`)
+        const req =  await api.get(`/menu/findbyuser/${id}`)
+        return req.data
     }
 
     return {login, register, createMenu, getAllMenuByUser, findUserData}

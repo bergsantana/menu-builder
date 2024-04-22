@@ -25,6 +25,6 @@ export const useUserStore = defineStore('user', () => {
         usersMenus.value = menus
     }
 
-    return { loggedInUser , login, logout, storeUsersMenus}
+    return { loggedInUser , login, logout, storeUsersMenus, usersMenus}
 
 })

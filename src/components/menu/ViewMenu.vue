@@ -6,6 +6,7 @@ import {Menu} from '../../interfaces/menu';
 
 const menuForm : Ref<Menu> = ref({
     menutitle: '',
+    ownerId: '',
     items: [{
         id: 1,
         seq: 1,

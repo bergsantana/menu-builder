@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import Button from './molecules/Button.vue'
+import { useUserStore } from '../stores/userStore';
+import { computed } from 'vue';
+import MenuListing from './menu/MenuListing.vue';
 
+
+const userStore = useUserStore()
+
+const headerStr = computed(() => {
+    return userStore.loggedInUser ? `Welcome, ${userStore.loggedInUser.firstName}` : 'Login or register to manage your menus'
+})
 
 </script>
 
@@ -11,7 +20,7 @@ import Button from './molecules/Button.vue'
         <div>
             <div :class="$style.greetings">
                 <h4>
-                    Hello, {{ `user` }}.
+                    {{ headerStr }}
                 </h4>
             </div>
             <div :class="$style.btns">
@@ -25,6 +34,10 @@ import Button from './molecules/Button.vue'
                 </RouterLink>
                 
             </div>
+
+            <div :id="$style.myMenusContainer" v-if="userStore.usersMenus">
+                <MenuListing />
+            </div> 
         </div>
     </div>
 </template>

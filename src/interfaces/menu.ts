@@ -1,9 +1,11 @@
 interface Menu {
     menutitle: string
+    ownerId: string
     items : Item[]
 }
 
 interface Item {
+    _id?: string
     id: number
     seq: number
     itemTitle: string
