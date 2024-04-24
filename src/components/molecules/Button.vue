@@ -18,10 +18,10 @@ const emit = defineEmits<{
     </button>
 </template>
 
-<style module scoped lang="scss"  >
+<style module  lang="scss"  >
 .customBtn{
     border: none;
-    color: var(--light-gray);
+    color: var(--white);
     background: var(--lighter-dark-background);
     font-weight: bold;
     margin: 0.28rem;
@@ -36,5 +36,7 @@ const emit = defineEmits<{
         border: solid var(--light-gray) 0.1rem;
         border-radius: 5%;
     }
+
+    transition: 300ms;
 }
 </style>

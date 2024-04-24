@@ -1,4 +1,5 @@
 interface Menu {
+    _id?: string
     menutitle: string
     ownerId: string
     items : Item[]

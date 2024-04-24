@@ -79,12 +79,13 @@ const setLoggedUser = async () => {
     justify-content: center;
 
     #inputsContainer{
-        width: 15rem;
+        width: 25rem;
         display: grid;
         border: solid 0.1rem var(--light-gray);
         margin: 0.25rem;
         padding: 0.25rem;
         border-radius: 3%;
+        height: 15rem;
     }
 }
 

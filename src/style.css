@@ -1,9 +1,11 @@
 :root{
     --dark-gray: rgb(43, 43, 43);
+    --light-dark-gray: rgb(54, 54, 54);
     --light-gray: rgb(201, 201, 201);
     --white: rgb(255, 255, 255);
     --black: rgb(0, 0, 0);
-    --lighter-dark-background: #444;
+    --lighter-dark-background: #002385;
+    --description-text: rgb(98, 98, 98);
 }
 
 body {

@@ -86,6 +86,7 @@ const userStore = useUserStore()
  }
 
  #contentContainer{
+  display: grid;
   grid-area: content;
   }
 
