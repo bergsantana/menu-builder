@@ -32,6 +32,8 @@ function useAPI()  {
         return userData.data
     }
 
+
+
     const createMenu = async (menu: Menu) => {
         return await api.post('/menu/create', menu)
     }
@@ -41,7 +43,13 @@ function useAPI()  {
         return req.data
     }
 
-    return {login, register, createMenu, getAllMenuByUser, findUserData}
+    const getOneMenu =  async( id: string) => {
+        const req : Menu = await api.get(`/menu/${id}`).then((res) =>{ return res.data}, () => { return null} )
+        console.log('req final', req)
+        return req
+    }
+
+    return {login, register, createMenu, getAllMenuByUser, findUserData, getOneMenu}
 }
 
 export default { api, useBearerToken, useAPI }

@@ -1,38 +1,94 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from 'vue-router';
-import { computed, ref, Ref  } from 'vue'
-import { Menu } from '../../interfaces/menu';
+import {   useRoute } from 'vue-router';
+import { computed, onMounted, ref, Ref } from 'vue'
+import { Menu, Item } from '../../interfaces/menu';
 import { useUserStore } from '../../stores/userStore';
-
+import api from '../../lib/api';
+import Button from '../molecules/Button.vue';
+import NumberInput from '../molecules/NumberInput.vue';
+ 
 const userStore = useUserStore()
 
 const route = useRoute()
 
-const thisMenu = computed (() => {return userStore.usersMenus?.find((menu) => menu._id === route.params.id)})
+const getOne = () => { return  api.useAPI().getOneMenu(
+    route.params.id instanceof Array ?
+    route.params.id.join() : route.params.id 
+ )}
 
-const menuForm : Ref<Menu> = ref(
-    thisMenu.value ??
-    {
-    menutitle: '',
-    ownerId: '',
-    items: [{
-        id: 1,
-        seq: 1,
-        itemTitle: '',
-        itemDescription: '',
-        photoUrl: '',
-        price: '0.00',
-        disabled: false
-    }]
+const requestMenu = ref( )
+
+const thisMenu = computed (() => {
+    return userStore.usersMenus?.find((menu) => menu._id === route.params.id) ?? requestMenu.value
 })
- 
+
+const order = ref<string>('')
+
+
+interface orderItem extends Item {
+    quantity: number
+}
+
+interface orderMenu extends Menu {
+    items: orderItem[]
+}
+
+const menuForm : Ref<orderMenu | undefined> = ref(
+)
+
+
+const clientView = computed(() => {
+    return userStore.loggedInUser === undefined
+})
+
+// watch(() => requestMenu.value, () =>{
+//     console.log(requestMenu.value)
+// })
+onMounted(async () =>{
+    if(!userStore.usersMenus){
+        const req = await getOne()  
+        requestMenu.value = req
+        requestMenu.value
+    }
+
+    menuForm.value = thisMenu.value ??
+        {
+            menutitle: '',
+            ownerId: '',
+            items: [{
+                id: 1,
+                seq: 1,
+                itemTitle: '',
+                itemDescription: '',
+                photoUrl: '',
+                price: '0.00',
+                disabled: false,
+                quantity: 0
+            }]
+    }
+    menuForm.value?.items.forEach((item) => {
+        item.quantity = 0
+    })
+    
+})
+
 </script>
 
 <template>
-    <div :id="$style.viewMenuContainer" >          
-        <div :class="$style.menuItem" v-for="(item, i) in menuForm.items" :key="item.id" :index="i">
+    <div :class="{
+        [$style.viewMenuContainer]: true 
+    }" >          
+        <div 
+            :class="{
+                [$style.menuItem]: true, 
+                [$style.clientView] : clientView}" 
+            v-for="(item, i) in menuForm?.items" 
+            :key="item.id"
+            :index="i"
+        >
             
             <input :id="$style.titleInput" :value="item.itemTitle" disabled />
+             
 
             <img :id="$style.photoUrlInput" :src="item.photoUrl" />
 
@@ -40,21 +96,27 @@ const menuForm : Ref<Menu> = ref(
 
             <input :id="$style.priceInput" :value="`FROM $${item.price}`"   disabled >
             
-            <!-- <button @click="() => item.disabled = !item.disabled">
-                {{ item.disabled ? 'disable' : 'enable' }}
-            </button> -->
+            <NumberInput 
+                :class="$style.quantityInput"  
+                v-model:num-input="item.quantity" 
+                v-if="clientView"
+                @update:num-input="order = order.concat(`${item.itemTitle} - $${item.price} - quantity: ${item.quantity}%0a`)"/>
+         
+
+
         </div>
-        <button>Edit</button>
-        <RouterLink to="/">
-            <button>Home</button>
-        </RouterLink>
-        {{ $route.params._id }}
+        <Button :text="'Edit'" v-if="!clientView"/>
+        <!-- <Button :text="'Send Order'" /> -->
+        <a
+            :id="$style.sendOrderBtn"
+        :href="`//api.whatsapp.com/send?phone=${''}&text=${order}`">SEND ORDER</a>
+ 
     </div>
 </template>
 
 
 <style module scoped lang="scss">
-#viewMenuContainer{
+.viewMenuContainer{
     display: grid;
     row-gap: 0.25rem;
     
@@ -62,7 +124,12 @@ const menuForm : Ref<Menu> = ref(
     width: 55rem;
     align-self: start;
     justify-self: center;
+  
+    background-color:var(--dark-gray);
+    padding: 0.51rem 1rem;
+    border-radius: 2%;
     
+
     .menuItem{
         display: grid;
         grid-template-areas: 
@@ -73,6 +140,23 @@ const menuForm : Ref<Menu> = ref(
         grid-template-rows: 3rem 2fr 1fr;
         grid-template-columns: 15rem 1fr;
        
+        &.clientView {
+            grid-template-areas: 
+            'img title btn'
+            'img description btn'
+            'img price btn';
+        
+        
+            grid-template-rows: 3rem 2fr 1fr ;
+            grid-template-columns: 15rem 1fr 10rem;
+
+            .quantityInput{
+                grid-area: btn;
+            }
+
+        }
+
+
         #titleInput{
             grid-area: title;
             font-size: 2rem;
@@ -122,7 +206,17 @@ const menuForm : Ref<Menu> = ref(
 
     }    
 
-    
+    #sendOrderBtn{
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+        height: 2rem;
+        width: 8rem;
+        text-align: center;
+        text-justify: center;
+        border-radius: 5%;
+
+    }
 
 }
 </style>

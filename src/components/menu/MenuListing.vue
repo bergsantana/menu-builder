@@ -4,7 +4,7 @@ import { useUserStore } from '../../stores/userStore';
 import MiniMenu from './components/MiniMenu.vue';
 import { useRouter } from 'vue-router';
 
-
+ 
 const userStore = useUserStore()
 
 const menuArr = computed(() => {return userStore.usersMenus ?? null})
@@ -16,6 +16,7 @@ const goToMenu = (menuId : string) => {
     router.push({path: `/menu/${menuId}`})
 }
 
+ 
 </script>
 
 <template>

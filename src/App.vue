@@ -88,6 +88,8 @@ const userStore = useUserStore()
  #contentContainer{
   display: grid;
   grid-area: content;
+  background-color: var(--black);
+
   }
 
 @media(max-width: 500px) {
