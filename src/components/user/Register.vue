@@ -21,6 +21,8 @@ const registerForm: Ref<User> = ref({
     email: '',
     password: '',
     birthDate: '',
+    phoneNumber: '+55 ',
+    paymentKey: ''
 })
 
 const showPass = ref(false)
@@ -51,6 +53,11 @@ const registerUser = async () => {
             
             <p :class="$style.title">E-mail</p>
             <input v-model="registerForm.email" :class="$style.inputField" />
+
+
+            <p :class="$style.title">Phone Number</p>
+            <input v-model="registerForm.phoneNumber" :class="$style.inputField" :id="$style.phoneNumberInput" />
+
 
 
             <div :id="$style.passwordField">

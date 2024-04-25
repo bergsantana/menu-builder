@@ -45,7 +45,7 @@ function useAPI()  {
 
     const getOneMenu =  async( id: string) => {
         const req : Menu = await api.get(`/menu/${id}`).then((res) =>{ return res.data}, () => { return null} )
-        console.log('req final', req)
+        //console.log('req final', req)
         return req
     }
 
