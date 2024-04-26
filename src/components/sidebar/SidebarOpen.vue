@@ -3,6 +3,12 @@ import { useRouter } from 'vue-router';
 import { useUserStore } from '../../stores/userStore';
 import Button from '../molecules/Button.vue';
 
+import RegisterIcon from '../icons/RegisterIcon.vue'
+import CloseIcon from '../icons/CloseIcon.vue'
+import HomeIcon from '../icons/HomeIcon.vue'
+import LoginIcon from '../icons/LoginIcon.vue'
+import LogoutIcon from '../icons/LogoutIcon.vue'
+
 // const props = defineProps<{
 //     loggedIn: boolean
 // }>() 
@@ -22,39 +28,52 @@ const goToRegister = () => { router.push({ path: '/users/register'}); emit('onRo
 const goToProfile = () => {router.push({ path:`/users/${userStore.loggedInUser?._id ?? 'register'}`});  emit('onRouteClick')}
 const goToLogin = () => {router.push({ path:`/login`});  emit('onRouteClick')}
 
+// Strings
+const whiteColor = '#FFFFFF'
 
 </script>
 
 <template>
     <aside :class="$style.sidebarContainer">
         <div>
-            <p>
-                Hello, USER
-            </p>
             <div :class="$style.btns"> 
-                 
-                <Button 
-                v-if="!userStore.loggedInUser"
-                :text="'Register'"
-                @btn-click="goToRegister" /> 
+                <div :class="$style.btnArea">
+                    <RegisterIcon :fill-color="whiteColor" :class="$style.icn"  />
+                    <Button 
+                    v-if="!userStore.loggedInUser"
+                    :text="'Register'"
+                    @btn-click="goToRegister" /> 
+                    
+
+                </div>
+
+                <div :class="$style.btnArea" >
+                    <LoginIcon :fill-color="whiteColor" :class="$style.icn" />
+                    <Button 
+                    v-if="!userStore.loggedInUser"
+                    :text="'Login'"
+                    @btn-click="goToLogin" /> 
+                </div>
                 
-                <Button 
-                v-if="!userStore.loggedInUser"
-                :text="'Login'"
-                @btn-click="goToLogin" /> 
                 
-                <Button 
-                v-if="userStore.loggedInUser"
-                :text="'My Profile'"
-                @btn-click="goToProfile" /> 
+                <div :class="$style.btnArea">
+                    <HomeIcon :fill-color="whiteColor" :class="$style.icn"  />
+                    <Button 
+                    v-if="userStore.loggedInUser"
+                    :text="'My Profile'"
+                    @btn-click="goToProfile" /> 
+                </div>
 
              
-                <div v-if="userStore.loggedInUser">
+                <div v-if="userStore.loggedInUser" :class="$style.btnArea">
+                    <LogoutIcon :fill-color="whiteColor"  :class="$style.icn" />
                     <Button  :text="'Logout'"   @btn-click="logout"  />
                     <Button :text="'My Menus'" /> 
                 </div>
-
-                <Button :text="'Close'"  @btn-click="emit('onClose')"/>
+                <div :class="$style.btnArea">
+                    <CloseIcon :fill-color="whiteColor" :class="$style.icn"   />
+                    <Button :text="'Close'"  @btn-click="emit('onClose')"/>
+                </div>
             </div>
         </div>
     </aside>
@@ -81,5 +100,15 @@ const goToLogin = () => {router.push({ path:`/login`});  emit('onRouteClick')}
         flex-direction: column;
         
     }
+}
+
+.icn{
+    height: 1rem;
+    width: 1rem;
+    padding: 0rem 0.5rem;
+}
+
+.btnArea{
+    border-bottom: 1px solid slategray;
 }
 </style>
