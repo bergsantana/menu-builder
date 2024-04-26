@@ -59,9 +59,9 @@ const userStore = useUserStore()
 
 .closedSidebar {
   grid-area: sidebar;
-  color: white;
-  opacity: 80%;
-  background-color: var(--light-gray);
+   
+  opacity: 89%;
+  background-color: var(--white);
   border-right: 0.15rem solid rgb(134, 134, 134);
 }
 

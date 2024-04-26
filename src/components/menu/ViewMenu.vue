@@ -121,11 +121,10 @@ onMounted(async () =>{
     width: 55rem;
     align-self: start;
     justify-self: center;
-  
-    background-color:var(--white);
+   
     padding: 0.51rem 1rem;
     border-radius: 2%;
-    
+    backdrop-filter: blur(4px);
 
     .menuItem{
         display: grid;
