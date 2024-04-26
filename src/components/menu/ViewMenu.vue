@@ -91,13 +91,13 @@ onMounted(async () =>{
 
             <input :id="$style.descriptionInput" :value="item.itemDescription" disabled />
 
-            <input :id="$style.priceInput" :value="`FROM $${item.price}`"   disabled >
+            <input :id="$style.priceInput" :value="`Por R$${item.price}`"   disabled >
             
             <NumberInput 
                 :class="$style.quantityInput"  
                 v-model:num-input="item.quantity" 
                 v-if="clientView"
-                @update:num-input="order = order.concat(`${item.itemTitle} - $${item.price} - quantity: ${item.quantity}%0a`)"/>
+                @update:num-input="order = order.concat(`${item.itemTitle} - $${item.price} - quantidade: ${item.quantity}%0a`)"/>
          
 
 
@@ -122,7 +122,7 @@ onMounted(async () =>{
     align-self: start;
     justify-self: center;
   
-    background-color:var(--dark-gray);
+    background-color:var(--white);
     padding: 0.51rem 1rem;
     border-radius: 2%;
     

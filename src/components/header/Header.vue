@@ -10,7 +10,7 @@ import Button from '../molecules/Button.vue';
         <div :id="$style.emptyContainer" ></div>
         <div :id="$style.menuIcon">
             <RouterLink to="/">
-                <MenuIcon  :fill-color="'#FFFFFF'"/>
+                <MenuIcon  :fill-color="'black'"/>
             </RouterLink>
             
         </div> 
@@ -27,8 +27,8 @@ import Button from '../molecules/Button.vue';
 
 <style module scoped lang="scss">
 #container {
-    background-color: var(--dark-gray);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--dark-gray);
     display: grid;
     grid-template-areas: 'head center home';
     grid-template-columns: 1fr 1fr 1fr ;
@@ -63,7 +63,7 @@ import Button from '../molecules/Button.vue';
     margin: 0.25rem 0rem;
      
     g {
-        fill: var(--white);
+        fill: var( --dark-gray);
     }}
 }
 </style>

@@ -43,7 +43,7 @@ const userStore = useUserStore()
 
 .maincontainer{
   height: 100vh;
-  background-color: rgb(201, 201, 201);
+   
   display: grid;
   /*grid-template-columns: 0.05fr 1fr;*/
   grid-template-areas: 
@@ -60,7 +60,8 @@ const userStore = useUserStore()
 .closedSidebar {
   grid-area: sidebar;
   color: white;
-  background: rgb(43, 43, 43);
+  opacity: 80%;
+  background-color: var(--light-gray);
   border-right: 0.15rem solid rgb(134, 134, 134);
 }
 
@@ -76,6 +77,8 @@ const userStore = useUserStore()
   position: absolute;
   border: solid rgb(117, 117, 117) 1px;
   height: 100%;
+  opacity: 100%;
+  z-index: 50;
   left: -1px;
   transition: left 150ms linear;
  }
@@ -88,7 +91,6 @@ const userStore = useUserStore()
  #contentContainer{
   display: grid;
   grid-area: content;
-  background-color: var(--black);
 
   }
 
