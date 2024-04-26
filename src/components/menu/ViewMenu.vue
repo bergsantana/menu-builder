@@ -40,10 +40,7 @@ const menuForm : Ref<orderMenu | undefined> = ref(
 const clientView = computed(() => {
     return userStore.loggedInUser === undefined
 })
-
-// watch(() => requestMenu.value, () =>{
-//     console.log(requestMenu.value)
-// })
+ 
 onMounted(async () =>{
     if(!userStore.usersMenus){
         const req = await getOne()  
@@ -218,5 +215,14 @@ onMounted(async () =>{
 
     }
 
+}
+
+@media (max-width: 500px) {
+    .viewMenuContainer{
+        width: 70%;
+    }
+    .menuItem{
+        width: 100%;
+    }
 }
 </style>
