@@ -35,26 +35,30 @@ const minusOne = () =>{
     align-items: center;
     justify-items: center;
     .btn{
-        width: 90%;
-        height: 90%;
+        width: 47%;
+        height: 60%;
         border-radius: 50%;
         border: none;
         background-color: var(--white);
-        font-size: 4vh;
+        font-size: 2vh;
         font-weight: bold;
         font-family: 'Consolas';
         text-align: center;
         text-justify: center;
+        border: 1px solid #f0f0f0;
+        color: slategray;
 
         transition: 300ms;
         &:hover{
             background-color: var(--light-gray);
         }
-    }
+
+     }
     .inputField{
         width: 80%;
         text-align: center;
         border: none;
+        font-size: 4vh;
     }
 }
 

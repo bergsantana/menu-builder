@@ -2,7 +2,7 @@ interface Menu {
     _id?: string
     menutitle: string
     ownerId: string,
-    paymentKey: string,
+     
     items : Item[]
 }
 

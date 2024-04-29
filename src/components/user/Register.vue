@@ -22,7 +22,7 @@ const registerForm: Ref<User> = ref({
     password: '',
     birthDate: '',
     phoneNumber: '+55 ',
- 
+    paymentKey: '',
 })
 
 const showPass = ref(false)
@@ -54,6 +54,9 @@ const registerUser = async () => {
             <p :class="$style.title">E-mail</p>
             <input v-model="registerForm.email" :class="$style.inputField" />
 
+            
+            <p :class="$style.title">Chave pix (opcional)</p>
+            <input v-model="registerForm.paymentKey" :class="$style.inputField" :id="$style.inputField" />
 
             <p :class="$style.title">Phone Number</p>
             <input v-model="registerForm.phoneNumber" :class="$style.inputField" :id="$style.phoneNumberInput" />
@@ -99,24 +102,31 @@ const registerUser = async () => {
 
 <style module scoped lang="scss">
 .form{
-    background: var(--dark-gray);
+    
     display: grid;
-    color: var(--light-gray);
+    color: var(--black);
     justify-content: center;
     align-items: start;
     height: 100%;
     grid-template-rows: 1fr 2fr;
+    
 }
 
 #inputFields{
     width: 20rem;
     border: 0.1rem solid var(--light-gray);
     padding: 1rem;
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin: 2.5rem 0rem 0rem 0rem;
     border-radius: 3%;
+
     .inputField{
         width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+        padding: 0rem 1.5rem;
     }
+ 
+    background-color: var(--white);
 }
  
 #showPass {
@@ -152,6 +162,7 @@ const registerUser = async () => {
     }
     margin: 2rem 0rem 1rem 0rem;
     padding: 0;
+   
 }
 
 #birthdateInput{
@@ -168,6 +179,14 @@ const registerUser = async () => {
 }
 .title{
     align-self: center;
+     
+    color: rgb(0, 0, 0);
+    background: none; 
+    backdrop-filter: blur(50px);
+    
+    opacity: 75%;
+    width: fit-content;
+    padding: 0 0.5rem ;
 }
 
 @media(max-width: 500px){

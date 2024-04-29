@@ -54,7 +54,7 @@ const userStore = useUserStore()
   grid-template-columns: 5rem 1fr 1fr;
   grid-template-rows: 2rem 1fr;
   position: relative;
-  row-gap: 1.05rem;
+   
   column-gap: 0.01rem;}
 
 .closedSidebar {
@@ -85,7 +85,7 @@ const userStore = useUserStore()
  
  #headerContainer{
   grid-area: header;
- 
+  height: 100%;
  }
 
  #contentContainer{
@@ -94,7 +94,7 @@ const userStore = useUserStore()
 
   }
 
-@media(max-width: 500px) {
+@media(max-width: 850px) {
   .maincontainer{
     grid-template-areas: 
       'header header header'
@@ -102,7 +102,7 @@ const userStore = useUserStore()
       'content content content'
       ;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 2rem 1fr 1fr;
+    grid-template-rows: 3rem 1fr 1fr;
 
   #contentContainer{
     overflow-x: scroll;

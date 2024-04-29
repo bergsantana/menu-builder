@@ -89,7 +89,12 @@ onMounted(async () =>{
 
             <img :class="$style.photoUrlInput" :src="item.photoUrl" />
 
-            <input :class="$style.descriptionInput" :value="item.itemDescription" disabled />
+            <input v-if="!clientView" :class="$style.descriptionInput" :value="item.itemDescription" disabled />
+            <div :class="$style.descriptionInput" v-else="clientView">
+                <p > 
+                    {{ item.itemDescription }}
+                </p>
+            </div>
 
             <input :class="$style.priceInput" :value="`Por R$${item.price}`"   disabled >
             
@@ -223,9 +228,9 @@ onMounted(async () =>{
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 850px) {
     .menuItem.clientView{
-        border: 2px solid red;
+        border: 2px solid rgb(255, 255, 255);
         display: grid;
         
         height: 15vh;
@@ -238,30 +243,52 @@ onMounted(async () =>{
         'img price btn';
         
         grid-template-columns: 35% 50% 15%;
-
+        grid-template-rows: 35% 40% 25%;
 
         .photoUrlInput{
             grid-area: img;
-  
+            border: none;
             max-width: 100%;
-            height: 101%;
-            width: 100%;
+            height: auto;
+            width: auto;
+            max-height: 100%;
+            align-self: center;
+            justify-self: center;
 
+            
         }
 
         .titleInput{
             grid-area: title;
+            font-size: large;
+            color: black;
+            border: none;
         }
 
         .descriptionInput{
+            display: flex;
             grid-area: description;
+            font-size:small;
+            border: none;
+            padding: 0.25rem;
+            align-self: start;
+            justify-self: start;
+            margin: 0;
+            overflow: scroll;
+            height: 100%;
+     
+
         }
 
         .priceInput{
             grid-area: price;
+            font-size: large;
+            color: green;
+            border: none;
         }
         .quantityInput{
-            grid-area: btn; 
+            grid-area: btn;
+            max-width: 5rem;
         }
 
     }
