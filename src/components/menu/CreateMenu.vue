@@ -8,6 +8,7 @@ import { DragHandle, SlickItem, SlickList } from 'vue-slicksort';
 const menuForm : Ref<Menu> = ref({
     menutitle: '',
     ownerId: '',
+    paymentKey: '',
     items: [{
         id: 1,
         seq: 1,

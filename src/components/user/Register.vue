@@ -22,7 +22,7 @@ const registerForm: Ref<User> = ref({
     password: '',
     birthDate: '',
     phoneNumber: '+55 ',
-    paymentKey: ''
+ 
 })
 
 const showPass = ref(false)

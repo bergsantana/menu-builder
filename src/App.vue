@@ -89,14 +89,28 @@ const userStore = useUserStore()
  }
 
  #contentContainer{
-  display: grid;
+ 
   grid-area: content;
 
   }
 
 @media(max-width: 500px) {
+  .maincontainer{
+    grid-template-areas: 
+      'header header header'
+      'content content content'
+      'content content content'
+      ;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2rem 1fr 1fr;
+
+  #contentContainer{
+    overflow-x: scroll;
+  }
+  }
   .closedSidebar {
      display: none;
   }
+
 }
 </style>

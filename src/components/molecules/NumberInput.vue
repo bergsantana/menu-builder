@@ -1,4 +1,4 @@
-<script setup lang="ts">
+0<script setup lang="ts">
 
 const props = defineProps<{
     numInput: number;
@@ -19,51 +19,83 @@ const minusOne = () =>{
 </script>
 
 <template>
-    <div :id="$style.inputContainer">
+    <div :class="$style.inputContainer">
         <button :class="$style.btn" @click="addOne">+</button>
-        <input :id="$style.inputField" :value="numInput" />
+        <input :class="$style.inputField" :value="numInput" />
         <button :class="$style.btn" @click="minusOne">-</button>
     </div>
 </template>
 
-<style module scoped lang="scss">
-#inputContainer{
+<style module lang="scss">
+.inputContainer{
     display: grid;
-    background-color: var(--white);
-    
+     
+    grid-template-columns: 1fr;
+    grid-template-rows: 33% 33% 33%;
+    align-items: center;
+    justify-items: center;
     .btn{
-        border: 1px solid var(--white);
-        color: var(--black);
+        width: 90%;
+        height: 90%;
         border-radius: 50%;
-        height: 5rem;
-        width: 5rem;
-        align-self: center;
-        justify-self: center;
-        font-size: 4rem;
-        align-content: center;
-        justify-content: center;
-        font-family: arial;
+        border: none;
         background-color: var(--white);
+        font-size: 4vh;
+        font-weight: bold;
+        font-family: 'Consolas';
         text-align: center;
+        text-justify: center;
 
+        transition: 300ms;
         &:hover{
-            cursor: pointer;
             background-color: var(--light-gray);
-            transition: 300ms;
         }
+    }
+    .inputField{
+        width: 80%;
+        text-align: center;
+        border: none;
+    }
+}
+
+
+// #inputContainer{
+//     display: grid;
+//     background-color: var(--white);
+    
+//     .btn{
+//         border: 1px solid var(--white);
+//         color: var(--black);
+//         border-radius: 50%;
+//         height: 56%;
+//         width: 56%;
+//         align-self: center;
+//         justify-self: center;
+//         font-size: 250%;
+//         align-content: center;
+//         justify-content: center;
+//         font-family: arial;
+//         background-color: var(--white);
+//         text-align: center;
+
+//         &:hover{
+//             cursor: pointer;
+//             background-color: var(--light-gray);
+//             transition: 300ms;
+//         }
 
        
-    }
+//     }
 
-    #inputField{
-            width: 1rem;
-            align-self: center;
-            justify-self: center;
-            font-size: 2rem;
-            border: none;
-            margin: 0.5rem 1rem;
-            align-content: end;
-            text-align: center;
-        }
-}
+//     #inputField{
+//             width: 80%;
+//             align-self: center;
+//             justify-self: center;
+//             font-size: 200%;
+//             border: none;
+//             margin: 0.5rem 1rem;
+//             align-content: end;
+//             text-align: center;
+//         }
+// }
 </style>
